@@ -1,0 +1,14 @@
+{
+  "name": "alexa-shopping-list-to-ticktick",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.0.0",
+    "nodemailer": "^7.0.0",
+    "selenium-webdriver": "^4.0.0"
+  }
+}
