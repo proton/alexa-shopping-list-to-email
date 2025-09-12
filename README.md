@@ -3,6 +3,8 @@
 
 This app logs into your Amazon Alexa shopping list, sends each item to a specified email, and deletes it from the list. 
 
+I created it to syncronize my Amazon Alexa shopping list with TickTick Todo list.
+
 ## Usage
 
 1. Copy `.env.example` to `.env` and fill in your credentials:

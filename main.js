@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import nodemailer from 'nodemailer'
-import { Builder, By } from 'selenium-webbrowser'
-import chrome from 'selenium-webbrowser/chrome.js'
+import { Builder, By } from 'selenium-webdriver'
+import chrome from 'selenium-webdriver/chrome.js'
 
 dotenv.config()
 
@@ -47,7 +47,7 @@ async function main() {
     if ((await browser.getCurrentUrl()).includes('signin')) {
       await browser.findElement(By.id('ap_email_login')).sendKeys(AMAZON_EMAIL)
       await browser.findElement(By.css("#continue input.a-button-input")).click()
-      await browser.sleep(2000)
+      await browser.sleep(5000)
       await browser.findElement(By.id('ap_password')).sendKeys(AMAZON_PASSWORD)
       await browser.findElement(By.css("#auth-signin-button input.a-button-input")).click()
       await browser.sleep(5000)
