@@ -1,7 +1,7 @@
 
-# Alexa Shopping List to Email (Node.js)
+# Alexa Shopping List to Email 
 
-This app logs into your Amazon Alexa shopping list, sends each item to a specified email, and deletes it from the list. Now implemented in JavaScript (Node.js).
+This app logs into your Amazon Alexa shopping list, sends each item to a specified email, and deletes it from the list. 
 
 ## Usage
 
@@ -21,10 +21,7 @@ This app logs into your Amazon Alexa shopping list, sends each item to a specifi
 
 ## Requirements
 - Amazon account with Alexa shopping list
-- Email account with SMTP access (Gmail, etc.)
 
 ## Notes
 - The script uses Selenium WebDriver and Chromium in headless mode.
-- For Gmail, you may need an App Password (not your main password).
 - The selectors for shopping list items and delete buttons may change if Amazon updates their UI.
-- Node.js 24 is used in the Docker image.
