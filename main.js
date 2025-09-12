@@ -1,3 +1,4 @@
+import fs from 'fs'
 import dotenv from 'dotenv'
 import nodemailer from 'nodemailer'
 import { Builder, By } from 'selenium-webdriver'
@@ -69,10 +70,15 @@ async function main() {
         
         let checkbox = await item.findElement(By.css('.checkBox input'))
         // await checkbox.click()
-      } catch (e) {
-        console.error('Error processing item:', e)
+      } catch (error) {
+        console.error('Error processing item:', error)
       }
     }
+  } catch (error) {
+    console.error('Error in main process:', error)
+    await browser.takeScreenshot().then(
+      data => fs.writeFileSync('tmp/debug.png', data, 'base64')
+    )
   } finally {
     await browser.quit()
   }
