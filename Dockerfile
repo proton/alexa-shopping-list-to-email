@@ -10,7 +10,7 @@ RUN apt-get update && \
 COPY package.json .
 RUN npm install
 
-COPY main.js .
+COPY browser.js mailer.js main.js ./
 
 ENV PATH="/usr/lib/chromium:/usr/lib/chromium-browser:$PATH"
 
