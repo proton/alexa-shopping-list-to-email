@@ -20,7 +20,12 @@ async function login(browser) {
 
   await browser.wait(until.elementLocated(By.id('ap_password')), DEFAULT_TIMEOUT)
   await browser.findElement(By.id('ap_password')).sendKeys(AMAZON_PASSWORD)
+
   await browser.findElement(By.css("#auth-signin-button input.a-button-input")).click()
+
+  await browser.sleep(5000) // just in case
+
+  await browser.wait(until.elementLocated(By.id('root')), DEFAULT_TIMEOUT)
 }
 
 async function processItem(item) {
@@ -56,7 +61,6 @@ async function main() {
         if ((await browser.getCurrentUrl()).includes('signin')) {
           console.log('Unauthenticated, logging in...')
           await login(browser)
-          await browser.wait(until.elementLocated(By.id('root')), DEFAULT_TIMEOUT)
           continue
         }
         throw error
@@ -64,8 +68,8 @@ async function main() {
 
       let item = null
       try {
-        await browser.wait(until.elementLocated(By.css('.virtual-list .inner')), 10000)
-        const items = await browser.findElementsByCss('.virtual-list .inner')
+        await browser.wait(until.elementLocated(By.css('.virtual-list .inner')), DEFAULT_TIMEOUT)
+        const items = await browser.findElements(By.css('.virtual-list .inner'))
         console.log(`Found ${items.length} items in the shopping list.`)
 
         item = items[0]

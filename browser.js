@@ -17,6 +17,9 @@ export class Browser {
     }
     options.addArguments('--no-sandbox')
     options.addArguments('--disable-dev-shm-usage')
+    options.addArguments('--password-store=basic')
+
+    // #autofill-show-bubbles-based-on-priorities
 
     this.driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build()
   }
@@ -31,6 +34,10 @@ export class Browser {
 
   get findElement() {
     return this.driver.findElement.bind(this.driver)
+  }
+
+  get findElements() {
+    return this.driver.findElements.bind(this.driver)
   }
 
   get wait() {
@@ -52,5 +59,11 @@ export class Browser {
     const image = await this.driver.takeScreenshot()
     fs.writeFileSync(filename, image, 'base64')
     console.log(`Screenshot saved to ${filename}`)
+  }
+
+  async saveHTML(filename) {
+    const html = await this.driver.getPageSource()
+    fs.writeFileSync(filename, html)
+    console.log(`HTML saved to ${filename}`)
   }
 }
