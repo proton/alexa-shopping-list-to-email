@@ -42,6 +42,8 @@ async function processItem(item) {
     await (await item.findElement(By.css('.checkBox input'))).click()
   } catch (error) {
     console.error('Error processing item:', error)
+    await browser.saveHTML('tmp/process_item_error.html')
+    await browser.takeScreenshot('tmp/process_item_error.png')
   }
 }
 
@@ -83,6 +85,7 @@ async function main() {
 
   } catch (error) {
     console.error('Error in main process:', error)
+    await browser.saveHTML('tmp/debug.html')
     await browser.takeScreenshot('tmp/debug.png')
   } finally {
     await browser.quit()
